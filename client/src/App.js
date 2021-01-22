@@ -1,6 +1,6 @@
 import './App.css';
 import View from './components/View';
-import Main from './components/Main';
+import Main from './views/Main';
 import {Router} from '@reach/router';
 
 function App() {
