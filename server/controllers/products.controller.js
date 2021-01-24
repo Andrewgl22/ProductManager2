@@ -19,3 +19,15 @@ module.exports.oneProduct = (req,res) => {
     .then((oneProd)=>res.json(oneProd))
     .catch(err=>console.log(err))
 }
+
+module.exports.updateProduct = (req,res) => {
+    Product.findByIdAndUpdate(req.params.id, req.body, {new:true})
+    .then(updatedObj=>res.json(updatedObj))
+    .catch((err)=>console.log(err))
+}
+
+module.exports.deleteProduct = (req,res) => {
+    Product.deleteOne({_id:req.params.id})
+    .then(delProd=>res.json(delProd))
+    .catch((err)=>console.log(err))
+}

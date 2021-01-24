@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../App.css';
+import { navigate } from '@reach/router'
 
-const Form = () => {
+const Form = (props) => {
     const [title, setTitle] = useState("")
     const [price, setPrice] = useState()
     const [description, setDescription] = useState("")
@@ -14,8 +15,12 @@ const Form = () => {
             price,
             description
         })
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
+            .then((res)=>{
+                console.log(res.data.title);
+                props.setProducts(props.products);
+                navigate('/products');
+            })
+            .catch((err)=>console.log(err))
     }
 
     return(
