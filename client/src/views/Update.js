@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../App.css';
 import {Link, navigate} from '@reach/router'
+import Form from '../components/Form'
 
 const Update = (props) => {
     const [title, setTitle] = useState("")
@@ -35,15 +36,7 @@ const Update = (props) => {
     return(
         <div className='App'>
             <h1>Update Product</h1>
-            <form onSubmit={updateProduct}>
-                <label>Title</label>
-                <input type='text' value={title} onChange={(e)=>setTitle(e.target.value)}/><br/>
-                <label>Price</label>
-                <input type='int' value={price} onChange={(e)=>setPrice(e.target.value)} /><br/>
-                <label>Description</label>
-                <input type='text' value={description} onChange={(e)=>setDescription(e.target.value)} /><br/>
-                <input type='submit'/>
-            </form>
+            <Form onSubmitHandler={updateProduct} title={title} price={price} description={description} setTitle={setTitle} setPrice={setPrice} setDescription={setDescription}/>
             <Link to='/products'>Back to Main Page</Link>
         </div>
     )
